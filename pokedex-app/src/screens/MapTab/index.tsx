@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
 
-const FavoriteTab = () => {
+const MapTab = () => {
   return (
     <View style={styles.container}>
-      <Text>Favorite!</Text>
+      <Text>Map!</Text>
     </View>
   );
 };
@@ -17,4 +17,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FavoriteTab;
+export default MapTab;

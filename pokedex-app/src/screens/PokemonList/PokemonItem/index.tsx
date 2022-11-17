@@ -1,24 +1,44 @@
-import { View, Text, Image, StyleSheet } from "react-native";
-import { IPokemonData } from "../../../interfaces/IPokemonData";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { memo } from 'react';
 import { capitalize } from "../../../helpers";
 import shadow from "../../../styles/shadow";
 import pokemonTypes from "../../../styles/pokemonTypes";
+import type { PokemonData } from "../../../types/pokemon";
 
-const PokemonItem = ({ item }: { item: IPokemonData }) => {
+const PokemonItem = ({
+  item,
+  navigation,
+}: {
+  item: PokemonData;
+  navigation: any;
+}) => {
+  const onPress = () => {
+    navigation.navigate("PokemonDetails", {data: item});
+  };
+
   return (
     <View style={styles.card}>
-      <View style={[styles.container, shadow.container]}>
+      <TouchableOpacity
+        onPress={onPress}
+        style={[styles.container, shadow.container]}
+      >
         <Image style={styles.image} source={{ uri: item.imageUrl }}></Image>
         <Text style={styles.idText}> #{item.id} </Text>
         <Text style={styles.nameText}> {capitalize(item.name)} </Text>
         {item.types.map((type) => {
           return (
-            <View style={[styles.typeContainer, pokemonTypes[type as keyof typeof pokemonTypes]]}>
+            <View
+              key={type}
+              style={[
+                styles.typeContainer,
+                pokemonTypes[type as keyof typeof pokemonTypes],
+              ]}
+            >
               <Text style={styles.typeText}> {type} </Text>
             </View>
           );
         })}
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -61,8 +81,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   typeText: {
-    color: "#fff"
-  }
+    color: "#fff",
+  },
 });
 
-export default PokemonItem;
+export default memo(PokemonItem);
