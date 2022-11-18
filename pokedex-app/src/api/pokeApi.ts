@@ -39,6 +39,24 @@ export const fetchPokemonData = async (url: string): Promise<PokemonData> => {
   };
 };
 
+export const fetchPokemonDescription = async (id: number): Promise<string> => {
+  const json = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`)
+    .then((response) => response.json())
+    .catch((error) => console.log("Fetch pokemons failed: " + error));
+
+  if (json) {
+    for (const element of json.flavor_text_entries) {
+      if (element.language.name === "en") {
+        const s = element.flavor_text
+          .replaceAll("\n", " ")
+          .replaceAll("\f", " ");
+        return s;
+      }
+    }
+  }
+  return "...";
+};
+
 export const fetchPokemons = async (
   limit: number,
   offset: number

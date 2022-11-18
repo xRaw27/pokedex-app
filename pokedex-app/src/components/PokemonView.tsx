@@ -1,28 +1,40 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { capitalize } from "../helpers";
 import ImagePixelated from "./ImagePixelated";
 import shadow from "../styles/shadow";
+import PokemonTypes from "./PokemonTypes";
 import type { PokemonData } from "../types/pokemon";
+
+import { fetchPokemonDescription } from "../api/pokeApi";
 
 const PokemonView = (data: PokemonData) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [description, setDescription] = useState("");
 
   const onLoad = () => {
     setIsLoading(false);
   };
 
+  useEffect(() => {
+    fetchPokemonDescription(data.id).then((s) => {
+      setDescription(s);
+    });
+  }, []);
+
   return (
     <View style={styles.background}>
-      {isLoading ? (
+      {isLoading || description === "" ? (
         <View style={styles.loader}>
           <ActivityIndicator size="large" />
         </View>
       ) : null}
       <ImagePixelated url={data.gifUrl} onLoad={onLoad} />
       <View style={[styles.container, shadow.container]}>
-        <Text> Id: {data.id} </Text>
-        <Text> Name: {data.name} </Text>
-        <Text> Types: {data.types} </Text>
+        <Text style={styles.idText}> #{data.id} </Text>
+        <Text style={styles.nameText}> {capitalize(data.name)} </Text>
+        <PokemonTypes types={data.types} />
+        <Text> {description} </Text>
         <Text> Abilities: {data.abilities} </Text>
         <Text> HP: {data.stats.hp} </Text>
         <Text> Attack: {data.stats.attack} </Text>
@@ -54,8 +66,27 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     alignItems: "center",
     marginTop: 10,
-    paddingVertical: 50,
+    paddingVertical: 20,
     width: "90%",
+  },
+  idText: {
+    color: "#444",
+    fontSize: 12,
+  },
+  nameText: {
+    fontWeight: "bold",
+    fontSize: 22,
+  },
+  typeContainer: {
+    flexDirection: "row",
+    marginTop: 8,
+    paddingHorizontal: 8,
+    paddingTop: 1,
+    paddingBottom: 2,
+    borderRadius: 5,
+  },
+  typeText: {
+    color: "#fff",
   },
 });
 
