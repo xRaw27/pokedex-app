@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import ImagePixelated from "./ImagePixelated";
+import shadow from "../styles/shadow";
 import type { PokemonData } from "../types/pokemon";
 
 const PokemonView = (data: PokemonData) => {
@@ -18,7 +19,7 @@ const PokemonView = (data: PokemonData) => {
         </View>
       ) : null}
       <ImagePixelated url={data.gifUrl} onLoad={onLoad} />
-      <View style={styles.container}>
+      <View style={[styles.container, shadow.container]}>
         <Text> Id: {data.id} </Text>
         <Text> Name: {data.name} </Text>
         <Text> Types: {data.types} </Text>
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#f6f8fC",
     height: "100%",
     width: "100%",
-    padding: 200,
+    justifyContent: "center",
     zIndex: 100,
   },
   background: {
@@ -50,11 +51,11 @@ const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: "#fff",
-    borderRadius: 12,
+    borderRadius: 30,
     alignItems: "center",
-    marginTop: 20,
+    marginTop: 10,
     paddingVertical: 50,
-    width: "80%",
+    width: "90%",
   },
 });
 

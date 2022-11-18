@@ -5,6 +5,8 @@ const ImagePixelated = ({ url, onLoad }: { url: string, onLoad: () => void}) => 
   return (
     <View style={styles.container}>
       <WebView
+        androidHardwareAccelerationDisabled={true}
+        androidLayerType="software"
         onLoad={onLoad}
         originWhitelist={["*"]}
         source={{
