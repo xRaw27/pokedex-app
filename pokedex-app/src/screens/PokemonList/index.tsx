@@ -64,7 +64,7 @@ const PokemonList = ({ navigation }: ListTabStackProps<"PokemonList">) => {
   const loadingIndicator = () => {
     return isLoading && !isRefreshing ? (
       <View style={styles.loader}>
-        <ActivityIndicator size="large"/>
+        <ActivityIndicator size="large" />
       </View>
     ) : null;
   };

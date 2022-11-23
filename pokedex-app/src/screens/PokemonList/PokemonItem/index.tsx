@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     height: 96,
   },
   idText: {
-    color: "#444",
+    color: "#555",
     fontSize: 12,
   },
   nameText: {

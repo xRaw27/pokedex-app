@@ -32,8 +32,6 @@ export const fetchPokemonData = async (url: string): Promise<PokemonData> => {
       hp: stats["hp"],
       attack: stats["attack"],
       defense: stats["defense"],
-      specialAttack: stats["special-attack"],
-      specialDefense: stats["special-defense"],
       speed: stats["speed"],
     },
   };
@@ -47,9 +45,7 @@ export const fetchPokemonDescription = async (id: number): Promise<string> => {
   if (json) {
     for (const element of json.flavor_text_entries) {
       if (element.language.name === "en") {
-        const s = element.flavor_text
-          .replaceAll("\n", " ")
-          .replaceAll("\f", " ");
+        const s = element.flavor_text.split('\n').join(' ')
         return s;
       }
     }
