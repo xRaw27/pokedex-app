@@ -26,7 +26,7 @@ const PokemonList = ({ navigation }: ListTabStackProps<"PokemonList">) => {
 
   const prefetchImages = async (newData: PokemonData[]) => {
     return await Promise.all(
-      newData.map((item: PokemonData) => Image.prefetch(item.imageUrl))
+      newData.map(async (item: PokemonData) => Image.prefetch(item.imageUrl))
     ).catch((error) => {
       console.log("Prefetch pokemons images failed: " + error);
     });

@@ -1,19 +1,22 @@
 import { StyleSheet, Text, View } from "react-native";
 
-const MapTab = () => {
-  return (
-    <View style={styles.container}>
-      <Text>Map!</Text>
-    </View>
-  );
-};
+const MapTab = () => (
+  <View style={styles.container}>
+    <Text style={styles.text}>
+      {"A map will be here soon..."}
+    </Text>
+  </View>
+);
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff",
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "#f6f8fC",
     alignItems: "center",
     justifyContent: "center",
+  },
+  text: {
+    fontSize: 18,
   },
 });
 
