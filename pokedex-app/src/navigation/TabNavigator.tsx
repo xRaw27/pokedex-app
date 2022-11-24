@@ -1,3 +1,4 @@
+import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import ListTabStackNavigator from "./ListTabStackNavigator";
 import FavoriteTab from "../screens/FavoriteTab";

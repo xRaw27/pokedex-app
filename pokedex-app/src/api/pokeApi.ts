@@ -45,7 +45,7 @@ export const fetchPokemonDescription = async (id: number): Promise<string> => {
   if (json) {
     for (const element of json.flavor_text_entries) {
       if (element.language.name === "en") {
-        const s = element.flavor_text.split('\n').join(' ')
+        const s = element.flavor_text.split("\n").join(" ");
         return s;
       }
     }
@@ -72,7 +72,7 @@ export const fetchPokemons = async (
     return [];
   });
 
-  console.log(pokemonList.map((item: any) => item.id));
+  // console.log(pokemonList.map((item: any) => item.id));
   // console.log(pokemonList[0]);
 
   return pokemonList;

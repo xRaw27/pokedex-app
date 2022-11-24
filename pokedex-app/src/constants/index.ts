@@ -1,1 +1,1 @@
-export const FETCH_BUNDLE_SIZE: number = 30;
+export const FETCH_BUNDLE_SIZE = 30;

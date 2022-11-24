@@ -1,3 +1,4 @@
+import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import pokemonTypes from "../styles/pokemonTypes";
 
@@ -11,7 +12,7 @@ const PokemonTypes = ({ types }: { types: string[] }) => (
           pokemonTypes[type as keyof typeof pokemonTypes],
         ]}
       >
-        <Text style={styles.typeText}> {type} </Text>
+        <Text style={styles.typeText}>{type}</Text>
       </View>
     ))}
   </View>

@@ -1,10 +1,9 @@
+import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 const MapTab = () => (
   <View style={styles.container}>
-    <Text style={styles.text}>
-      {"A map will be here soon..."}
-    </Text>
+    <Text style={styles.text}>{"A map will be here soon..."}</Text>
   </View>
 );
 

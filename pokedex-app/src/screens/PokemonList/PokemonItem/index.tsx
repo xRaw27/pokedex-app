@@ -1,5 +1,5 @@
+import React, { memo } from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
-import { memo } from "react";
 import { capitalize } from "../../../helpers";
 import shadow from "../../../styles/shadow";
 import pokemonTypes from "../../../styles/pokemonTypes";

@@ -1,3 +1,4 @@
+import React from "react";
 import PokemonView from "../../components/PokemonView";
 import type { ListTabStackProps } from "../../types/navigation";
 

@@ -11,11 +11,11 @@ export type PokemonData = {
   gifUrl: string;
   types: string[];
   abilities: string[];
-  height: number
-  weight: number
+  height: number;
+  weight: number;
   stats: {
     hp: number;
-    attack: number; 
+    attack: number;
     defense: number;
     speed: number;
   };
